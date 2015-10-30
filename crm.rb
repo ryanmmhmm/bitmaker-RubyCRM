@@ -22,6 +22,22 @@ class CRM
 			user_input = gets.chomp.to_i
 			break if user_input == 7
 			choose_option(user_input)
+		end
+	end
+
+	def choose_option(user_input)
+		case user_input
+		when 1 then add_contact
+		when 2 then modify_contact
+		when 3 then display_all_contacts
+		when 4 then display_contact
+		when 5 then display_contact_attr
+		when 6 then delete_contact
+		else
+				puts "I'm sorry Dave, I'm afraid you can't do that."
+		end
 	end
 end
 
+my_awesome_crm = CRM.new('Bitmaker CRM')
+my_awesome_crm.main_menu
