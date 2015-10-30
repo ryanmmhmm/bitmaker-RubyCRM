@@ -14,5 +14,14 @@ class CRM
 		puts "6. Delete a contact"
 		puts "7. Exit"
 	end
+
+	def main_menu
+		while true
+			print_main_menu
+			print "Choose an option: "
+			user_input = gets.chomp.to_i
+			break if user_input == 7
+			choose_option(user_input)
+	end
 end
 
