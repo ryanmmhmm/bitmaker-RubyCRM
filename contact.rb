@@ -32,6 +32,12 @@ attr_accessor :first_name, :last_name, :email, :notes
     @@contacts.sort
   end
 
+  def self.find(id)
+    @@contacts.each do |contact|
+      return contact if id == contact.id
+    end
+  end
+
   def self.modify
 
   end
@@ -40,8 +46,16 @@ attr_accessor :first_name, :last_name, :email, :notes
     "#id: {@id}, first name: #{@first_name}, last name: #{@last_name}, email: #{@email}, notes: #{@notes}"
   end
 
-  def self.display_attribute
-
+  def display_attribute(category)
+    case category
+    when "id" then "#{@id}"
+    when "first name" then "#{@first_name}"
+    when "last name"  then "#{@last_name}"
+    when "email" then "#{@email}"
+    when "notes" then "#{@notes}"
+    else
+      nil
+    end
   end
 
   def self.delete
