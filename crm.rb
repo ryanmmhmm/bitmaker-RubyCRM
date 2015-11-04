@@ -84,6 +84,11 @@ class CRM
     end
   end
 
+  def display_contact
+    contact = ask_for_id
+    puts contact.display
+  end
+
   def print_available_attr
     puts "***********************"
     puts "==Available Atributes=="

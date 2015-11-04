@@ -9,14 +9,20 @@ attr_accessor :first_name, :last_name, :email, :notes
 @@id = 1  # unique identifier for each contact
 
   def initialize(first_name, last_name, options = {})
-    @id = @@id
     @first_name = first_name
     @last_name = last_name
     @email = options[:email]
     @notes = options[:notes]
 
+    @id = @@id
     @@id += 1
   end
+
+  # def find_first_open_id
+  #   @@contacts.each_with_index do |id, i|
+  #     return i if id == nil
+  #   end
+  # end
 
   # this method was created because we are tracking all contacts in an array
   def self.create(first_name, last_name, options)
@@ -51,7 +57,7 @@ attr_accessor :first_name, :last_name, :email, :notes
   end
 
   def display
-    "#id: #{@id}, first name: #{@first_name}, last name: #{@last_name}, email: #{@email}, notes: #{@notes}"
+    ">> id: #{@id}, first name: #{@first_name}, last name: #{@last_name}, email: #{@email}, notes: #{@notes}"
   end
 
   def display_attribute(category)
@@ -76,12 +82,8 @@ attr_accessor :first_name, :last_name, :email, :notes
   end
 
   def delete
-    # the object must be removed from @@contacts
-    update_main
+    @@contacts.delete_at(@id - 1)
   end
 
-  def update_main
-
-  end
 
 end
