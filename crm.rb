@@ -55,9 +55,10 @@ class CRM
   end
 
   def display_all_contacts
-    Contact.all.each do |values|
-      puts "#{values}"
+    Contact.all.each do |value|
+      puts value.display
     end
+    # puts Contact.all
   end
 
 end

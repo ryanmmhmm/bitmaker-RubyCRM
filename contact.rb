@@ -12,8 +12,8 @@ attr_accessor :first_name, :last_name, :email, :notes
     @id = @@id
     @first_name = first_name
     @last_name = last_name
-    @email = :email
-    @notes = :notes
+    @email = options[:email]
+    @notes = options[:notes]
 
     @@id += 1
   end
@@ -25,7 +25,7 @@ attr_accessor :first_name, :last_name, :email, :notes
   end
 
   def self.all
-    @@contacts  # print the contacts array
+    @@contacts
   end
 
   def self.sort
@@ -33,12 +33,15 @@ attr_accessor :first_name, :last_name, :email, :notes
   end
 
   def self.modify
+
   end
 
-  def self.display
+  def display
+    "#id: {@id}, first name: #{@first_name}, last name: #{@last_name}, email: #{@email}, notes: #{@notes}"
   end
 
   def self.display_attribute
+
   end
 
   def self.delete
