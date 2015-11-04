@@ -6,6 +6,9 @@ class CRM
   end
 
   def print_main_menu
+    puts "******************************"
+    puts "==========Main Menu==========="
+    puts "******************************"
     puts "1. Add a contact"
     puts "2. Modify a contact"
     puts "3. Display all contacts"
@@ -13,6 +16,7 @@ class CRM
     puts "5. Display contact attribute"
     puts "6. Delete a contact"
     puts "7. Exit"
+    puts "******************************"
   end
 
   def main_menu
@@ -62,26 +66,35 @@ class CRM
   end
 
   def print_available_attr
-    puts "***************"
+    puts "***********************"
+    puts "==Available Atributes=="
+    puts "***********************"
     puts "1. ID"
     puts "2. First Name"
     puts "3. Last Name"
     puts "4. Email"
     puts "5. Notes"
-    puts "***************"
-
+    puts "6. Exit"
+    puts "***********************"
   end
 
   def display_contact_attr
-    print "Who's id are you looking for?: "
-    id = gets.chomp.to_i
-
+    while true
+      print "What ID are you looking for?: "
+      id = gets.chomp.to_i
+      break if id.integer? == true
+      puts "That ID isn't in our records"
+    end
     contact = Contact.find(id)
-    print_available_attr
 
-    print "What do you want to know about them?: "
-    attribute = gets.chomp.to_i
-    puts "Here is what you're looking for: #{contact.display_attribute(attribute)}"
+    while true
+      print_available_attr
+      print "What do you want to know about them?: "
+      user_input = gets.chomp.to_i
+      break if user_input <= 6
+      puts "That's not a valid attribute!"
+    end
+    puts "Here is what you're looking for: #{contact.display_attribute(user_input)}"
   end
 
 end

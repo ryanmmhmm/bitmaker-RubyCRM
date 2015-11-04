@@ -59,7 +59,7 @@ attr_accessor :first_name, :last_name, :email, :notes
     end
 
     ## this might work better in a web interface where the input is less restricted
-    ## Thanks, Sarah Black!
+    ## Thanks, Natalie Black!
 
     # if [:id, :first_name, :last_name].include?(category)
     #   send(category.to_sym)  # little nugget of pride
