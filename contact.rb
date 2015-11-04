@@ -2,7 +2,7 @@
 
 class Contact
 
-attr_reader = :id
+attr_reader :id
 attr_accessor :first_name, :last_name, :email, :notes
 
 @@contacts = []  # store all contacts in an array
@@ -34,8 +34,9 @@ attr_accessor :first_name, :last_name, :email, :notes
 
   def self.find(id)
     @@contacts.each do |contact|
-      return contact if id == contact.id
+      return contact if id == contact.id  # returns the contact object
     end
+    return nil  # no contact was found so nil
   end
 
   def self.modify
@@ -43,16 +44,16 @@ attr_accessor :first_name, :last_name, :email, :notes
   end
 
   def display
-    "#id: {@id}, first name: #{@first_name}, last name: #{@last_name}, email: #{@email}, notes: #{@notes}"
+    "#id: #{@id}, first name: #{@first_name}, last name: #{@last_name}, email: #{@email}, notes: #{@notes}"
   end
 
   def display_attribute(category)
     case category
-    when "id" then "#{@id}"
-    when "first name" then "#{@first_name}"
-    when "last name"  then "#{@last_name}"
-    when "email" then "#{@email}"
-    when "notes" then "#{@notes}"
+    when 1 then "#{@id}"
+    when 2 then "#{@first_name}"
+    when 3 then "#{@last_name}"
+    when 4 then "#{@email}"
+    when 5 then "#{@notes}"
     else
       nil
     end

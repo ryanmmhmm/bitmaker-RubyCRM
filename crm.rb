@@ -61,6 +61,29 @@ class CRM
     # puts Contact.all
   end
 
+  def print_available_attr
+    puts "***************"
+    puts "1. ID"
+    puts "2. First Name"
+    puts "3. Last Name"
+    puts "4. Email"
+    puts "5. Notes"
+    puts "***************"
+
+  end
+
+  def display_contact_attr
+    print "Who's id are you looking for?: "
+    id = gets.chomp.to_i
+
+    contact = Contact.find(id)
+    print_available_attr
+
+    print "What do you want to know about them?: "
+    attribute = gets.chomp.to_i
+    puts "Here is what you're looking for: #{contact.display_attribute(attribute)}"
+  end
+
 end
 
 my_awesome_crm = CRM.new('Bitmaker CRM')
