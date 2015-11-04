@@ -58,11 +58,30 @@ class CRM
     Contact.create(first_name, last_name, email: email, notes: notes)
   end
 
+  def ask_for_id  # find a contact by ID number
+    while true
+      print "What Contact ID are you looking for?: "
+      id = gets.chomp.to_i
+      break if id.integer? == true
+      puts "That ID isn't in our records..."
+    end
+    Contact.find(id) # => returns contact object
+  end
+
+  def modify_contact
+    contact = ask_for_id
+    category = choose_available_attr("modify")
+    print "What would you like to change it to?: "
+    change_field_to = gets.chomp
+    contact.modify(category, change_field_to)
+    puts "Contact ID: #{contact.id} has been updated."
+    puts contact.display
+  end
+
   def display_all_contacts
     Contact.all.each do |value|
       puts value.display
     end
-    # puts Contact.all
   end
 
   def print_available_attr
@@ -78,23 +97,28 @@ class CRM
     puts "***********************"
   end
 
-  def display_contact_attr
-    while true
-      print "What ID are you looking for?: "
-      id = gets.chomp.to_i
-      break if id.integer? == true
-      puts "That ID isn't in our records"
-    end
-    contact = Contact.find(id)
-
+  def choose_available_attr(typify)
     while true
       print_available_attr
-      print "What do you want to know about them?: "
+      print "What would you like to #{typify}?: "
       user_input = gets.chomp.to_i
-      break if user_input <= 6
+      break if user_input <=6
       puts "That's not a valid attribute!"
     end
+    return user_input
+  end
+
+  def display_contact_attr
+    contact = ask_for_id
+    user_input = choose_available_attr("see")
     puts "Here is what you're looking for: #{contact.display_attribute(user_input)}"
+  end
+
+  def delete_contact
+    contact = ask_for_id
+    print "Are you sure you want to delete this contact? (Y = yes): "
+    user_input = gets.chomp
+    contact.delete if user_input == "Y"
   end
 
 end

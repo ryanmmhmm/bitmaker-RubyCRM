@@ -39,8 +39,15 @@ attr_accessor :first_name, :last_name, :email, :notes
     return nil  # no contact was found so nil
   end
 
-  def self.modify
-
+  def modify(category, change_field_to)
+    case category
+    when 2 then @first_name = change_field_to
+    when 3 then @last_name = change_field_to
+    when 4 then @email = change_field_to
+    when 5 then @notes = change_field_to
+    else
+      nil
+    end
   end
 
   def display
@@ -68,7 +75,13 @@ attr_accessor :first_name, :last_name, :email, :notes
     # end
   end
 
-  def self.delete
+  def delete
+    # the object must be removed from @@contacts
+    update_main
+  end
+
+  def update_main
+
   end
 
 end
