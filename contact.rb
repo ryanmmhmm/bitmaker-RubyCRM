@@ -8,12 +8,12 @@ attr_accessor :first_name, :last_name, :email, :notes
 @@contacts = []  # store all contacts in an array
 @@id = 1  # unique identifier for each contact
 
-  def initialize(first_name, last_name, options)
+  def initialize(first_name, last_name, options = {})
     @id = @@id
     @first_name = first_name
     @last_name = last_name
-    @email = options[:email]
-    @notes = options[:notes]
+    @email = :email
+    @notes = :notes
 
     @@id += 1
   end
@@ -21,8 +21,6 @@ attr_accessor :first_name, :last_name, :email, :notes
   # this method was created because we are tracking all contacts in an array
   def self.create(first_name, last_name, options)
     new_contact = self.new(first_name, last_name, options)  # same as Contact.new()
-    puts "A new contact has been added."
-    puts "The contact is now stored in the @@contacts variable."
     @@contacts << new_contact
   end
 
@@ -33,4 +31,17 @@ attr_accessor :first_name, :last_name, :email, :notes
   def self.sort
     @@contacts.sort
   end
+
+  def self.modify
+  end
+
+  def self.display
+  end
+
+  def self.display_attribute
+  end
+
+  def self.delete
+  end
+
 end

@@ -55,10 +55,11 @@ class CRM
   end
 
   def display_all_contacts
-    @@contacts.each do |read|
-      puts "#{read}"
+    Contact.all.each do |values|
+      puts "#{values}"
     end
   end
+
 end
 
 my_awesome_crm = CRM.new('Bitmaker CRM')
