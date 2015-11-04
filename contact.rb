@@ -57,7 +57,7 @@ attr_accessor :first_name, :last_name, :email, :notes
   end
 
   def display
-    ">> id: #{@id}, first name: #{@first_name}, last name: #{@last_name}, email: #{@email}, notes: #{@notes}"
+    ">> ID: #{@id}, First Name: #{@first_name}, Last Name: #{@last_name}, Email: #{@email}, Notes: #{@notes}"
   end
 
   def display_attribute(category)
