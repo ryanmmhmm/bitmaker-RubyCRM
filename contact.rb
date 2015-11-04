@@ -57,6 +57,15 @@ attr_accessor :first_name, :last_name, :email, :notes
     else
       nil
     end
+
+    ## this might work better in a web interface where the input is less restricted
+    ## Thanks, Sarah Black!
+
+    # if [:id, :first_name, :last_name].include?(category)
+    #   send(category.to_sym)  # little nugget of pride
+    # else
+    #   nil
+    # end
   end
 
   def self.delete
