@@ -5,7 +5,7 @@ class Contact
 attr_reader :id
 attr_accessor :first_name, :last_name, :email, :notes
 
-@@contacts = []  # store all contacts in an array
+@@contacts = []  # store all contacts (objects) in an array
 @@id = 1  # unique identifier for each contact
 
   def initialize(first_name, last_name, options = {})
@@ -18,11 +18,12 @@ attr_accessor :first_name, :last_name, :email, :notes
     @@id += 1
   end
 
-  def find_index_of_first_open_id
-    @@contacts.id.each_with_index do |id, index|
-      return index if id == nil
-    end
-  end
+  # def find_index_of_first_open_id
+  #   last_id = 1  # default value for first entry
+  #   @@contacts.id.each_with_index do |id, index|
+  #     return index if last_id != id
+  #   end
+  # end
 
   # this method was created because we are tracking all contacts in an array
   def self.create(first_name, last_name, options)
